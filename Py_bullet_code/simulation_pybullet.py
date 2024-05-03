@@ -10,8 +10,8 @@ from enum import Enum
 DEG2RAD = math.pi/180.0 
 RAD2DEG = 180.0/math.pi
 ref_elbow = 30*DEG2RAD
-ref_shoulder = 30*DEG2RAD
-init_position = (0,90,90,0,0,0,0,0,0,0,0)
+ref_shoulder = 20*DEG2RAD
+init_position = (0,80,90,0,0,0,0,0,0,0,0)
 reset_position = (0,0,0,0,0,0,0,0,0,0,0)
 
 max_base_joint_angle = 100
@@ -103,7 +103,7 @@ class SimulationPyBullet:
         self.tilt_joint_angle = 0.0
 
         self.verification_apply = False
-        self.verification_init = False
+        # self.verification_init = False
 
         #State of the system
         self._state = State.BEGIN
@@ -113,7 +113,7 @@ class SimulationPyBullet:
         press_button_init = p.readUserDebugParameter(self.init_button) - self.last_value_button_init
         if keyboard.is_pressed('i') or press_button_init == 1 :
             self.base_joint_angle = 0.0*DEG2RAD
-            self.shoulder_joint_angle = -90*DEG2RAD + ref_shoulder
+            self.shoulder_joint_angle = -80*DEG2RAD + ref_shoulder
             self.elbow_joint_angle = - 90*DEG2RAD + ref_elbow
             self.rot_joint_angle = 0.0*DEG2RAD 
             self.tilt_joint_angle = 0.0*DEG2RAD
@@ -213,7 +213,7 @@ class SimulationPyBullet:
         if keyboard.is_pressed('i') or press_button_init == 1 :
             print("start init ............................")
             self.rec_position(init_position)
-            self.verification_init = True
+            # self.verification_init = True
             time.sleep(0.2)
             return 1
 
@@ -236,19 +236,22 @@ class SimulationPyBullet:
         press_button_apply = p.readUserDebugParameter(self.apply_button)- self.last_value_button_apply
         if keyboard.is_pressed('a') or press_button_apply == 1 :
             print("start apply ............................")
-            elbow_new_ref = self.elbow_joint_angle - ref_elbow
-            shoulder_new_ref = self.shoulder_joint_angle - ref_shoulder
-            self.result(p.readUserDebugParameter(self.speed_slider))
-            self.last_base_joint_angle = self.base_joint_angle
-            self.last_shoulder_joint_angle = shoulder_new_ref
-            self.last_elbow_joint_angle = elbow_new_ref
-            self.last_rot_joint_angle = self.rot_joint_angle
-            self.last_tilt_joint_angle = self.tilt_joint_angle
-            self.last_value_button_apply = p.readUserDebugParameter(self.apply_button)
-            self.last_value_button_init = p.readUserDebugParameter(self.init_button)
-            self.last_value_button_reset = p.readUserDebugParameter(self.reset_button)
-            self.last_value_button_stop = p.readUserDebugParameter(self.stop_button) 
+            self.aplly_value_dk()
             time.sleep(0.2)
+
+    def aplly_value_dk(self) : 
+        elbow_new_ref = self.elbow_joint_angle - ref_elbow
+        shoulder_new_ref = self.shoulder_joint_angle - ref_shoulder
+        self.result(p.readUserDebugParameter(self.speed_slider))
+        self.last_base_joint_angle = self.base_joint_angle
+        self.last_shoulder_joint_angle = shoulder_new_ref
+        self.last_elbow_joint_angle = elbow_new_ref
+        self.last_rot_joint_angle = self.rot_joint_angle
+        self.last_tilt_joint_angle = self.tilt_joint_angle
+        self.last_value_button_apply = p.readUserDebugParameter(self.apply_button)
+        self.last_value_button_init = p.readUserDebugParameter(self.init_button)
+        self.last_value_button_reset = p.readUserDebugParameter(self.reset_button)
+        self.last_value_button_stop = p.readUserDebugParameter(self.stop_button) 
 
     def constrain_min_max(self, val, min_val, max_val):
         return min(max_val, max(min_val, val))
@@ -358,7 +361,8 @@ class SimulationPyBullet:
         """Callback function triggered every 100 milliseconds to execute to robot program"""
         # print(self._state)
         self.verification_apply = False
-        self.verification_init = True
+        # self.verification_init = False
+        # print(self.verification_init)
         if self._state == State.BEGIN:
             p.removeAllUserParameters()
             self.position_zero()
