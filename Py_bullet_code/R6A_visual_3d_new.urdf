@@ -1,0 +1,228 @@
+<?xml version="1.0" ?>
+<robot name="robot_arm.urdf">
+  <link name="baseLink">
+    <contact>
+      <lateral_friction value="0.5"/>
+      <rolling_friction value="0.0"/>
+      <contact_cfm value="0.0"/>
+      <contact_erp value="1.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value=".1"/>
+       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.025 -0.54 -0.059"/>
+      <geometry>
+        <mesh filename="Base_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+       <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	 	<mesh filename="Base_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link name="Joint1Link">
+    <contact>
+      <lateral_friction value="0.5"/>
+      <rolling_friction value="0.0"/>
+      <contact_cfm value="0.0"/>
+      <contact_erp value="1.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value=".1"/>
+       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0.045 -0.5425 -0.36"/>
+      <geometry>
+        <mesh filename="Joint1_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+       <material name="black">
+        <color rgba="1 0.4 0.4 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	 	<mesh filename="Joint1_new.obj" scale=".002 .002 .002"/>
+      </geometry>
+    </collision> -->
+  </link>
+
+
+  <joint name="base_joint" type="revolute">
+    <parent link="baseLink"/>
+    <child link="Joint1Link"/>
+    <origin xyz="0 0 0.375" rpy="0 0 0" />
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.75" upper="1.75" />
+  </joint>
+
+
+  <link name="Joint2&3Link">
+    <contact>
+      <lateral_friction value="0.5"/>
+      <rolling_friction value="0.0"/>
+      <contact_cfm value="0.0"/>
+      <contact_erp value="1.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value=".1"/>
+       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.9 -0.055 -0.48"/>
+      <geometry>
+        <mesh filename="Joint2 & Joint3_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+       <material name="black">
+        <color rgba="1 0.4 0.4 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	 	<mesh filename="Joint2 & Joint3_new.obj" scale=".002 .002 .002"/>
+      </geometry>
+    </collision> -->
+  </link>
+
+  <link name="Joint4Link">
+    <contact>
+      <lateral_friction value="0.5"/>
+      <rolling_friction value="0.0"/>
+      <contact_cfm value="0.0"/>
+      <contact_erp value="1.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value=".1"/>
+       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 3.14" xyz="1.18 0.037 -1.093"/>
+
+      <geometry>
+        <mesh filename="Joint4_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+       <material name="black">
+        <color rgba="1 0.4 0.4 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	 	<mesh filename="Joint4_new.obj" scale=".002 .002 .002"/>
+      </geometry>
+    </collision> -->
+  </link>
+
+  <link name="Joint5Link">
+    <contact>
+      <lateral_friction value="0.5"/>
+      <rolling_friction value="0.0"/>
+      <contact_cfm value="0.0"/>
+      <contact_erp value="1.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value=".1"/>
+       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="3.2 3.14 -0.05" xyz="1.025 -0.45 -0.915"/>
+      <geometry>
+        <mesh filename="Joint5_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+       <material name="black">
+        <color rgba="1 0.4 0.4 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	 	<mesh filename="Joint5_new.obj" scale=".002 .002 .002"/>
+      </geometry>
+    </collision> -->
+  </link>
+
+
+  <link name="Joint6Link">
+    <contact>
+      <lateral_friction value="0.5"/>
+      <rolling_friction value="0.0"/>
+      <contact_cfm value="0.0"/>
+      <contact_erp value="1.0"/>
+    </contact>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+       <mass value=".1"/>
+       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual>
+      <origin rpy="1.91986 0 0" xyz="0.3 0.818 0.425"/>
+      <geometry>
+        <mesh filename="Joint6_new.obj" scale=".003 .003 .003"/>
+      </geometry>
+       <material name="black">
+        <color rgba="1 0.4 0.4 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	 	<mesh filename="Joint6_new.obj" scale=".002 .002 .002"/>
+      </geometry>
+    </collision> -->
+  </link>
+
+  <joint name="joint1_joint2" type="revolute">
+    <parent link="Joint1Link"/>
+    <child link="Joint2&3Link"/>
+    <origin xyz="-0.1 0.114 0.055" rpy="0 0 0" />
+    <axis xyz="1 0 0"/>
+    <limit lower="-2.62" upper="1.57" />
+  </joint>
+
+  <joint name="joint3_joint4" type="revolute">
+    <parent link="Joint2&3Link"/>
+    <child link="Joint4Link"/>
+    <origin xyz="0.255 -0.45 0.275" rpy="0 0 3.14" />
+    <axis xyz="1 0 0"/>
+    <limit lower="-2.62" upper="1.57" />
+  </joint>
+    
+
+  <joint name="joint4_joint5" type="revolute">
+    <parent link="Joint4Link"/>
+    <child link="Joint5Link"/>
+    <origin xyz="0.125 0.02 0.177" rpy="0 0 0" /> 
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14" upper="3.14" />
+  </joint>
+
+
+  <joint name="joint5_joint6" type="revolute">
+    <parent link="Joint5Link"/>
+    <child link="Joint6Link"/>
+    <origin xyz="0.03 -0.337 -0.013" rpy="0.523599 0 3.14" />
+    <axis xyz="-1 0 0"/>
+    <limit lower="-1.57" upper="3.49" />
+  </joint>
+
+
+
+</robot>
+
+

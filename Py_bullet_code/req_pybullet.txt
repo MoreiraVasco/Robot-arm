@@ -1,0 +1,18 @@
+mettre dans le meme dossier les 2 fichiers pythons (simulation_pybullet et main ) , le fichier urdf ( R6A_visual_3d_new)
+avec les 7 fichiers .obj (Base_new.obj , Joint1_new.obj ,Joint2 & Joint3_new.obj , Joint4_new.obj , Joint5_new.obj, Joint6_new.obj , plane.obj)
+
+
+install pybullet : pip install pybullet  (si l'installation ne fonctionne pas https://deepakjogi.medium.com/how-to-install-pybullet-physics-simulation-in-windows-e1f16baa26f6)
+
+install time : pip install datetime
+
+install numpy : pip install numpy
+
+
+install keyboard : pip install keyboard
+
+
+
+fonctionnement du code lorsque l'on veut valider un déplacement appuyer sur apply. Lors de l'appuie sur init ou reset il faut ensuite cliquer sur apply pour valider le déplacement les valeurs print dans le terminal sont les angles en rad à effectuer par le bras robot.
+Dans le fichier main la variable pour récupérer ces angles est dk_joint_angle.
+
